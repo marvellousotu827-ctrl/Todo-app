@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO-DO APP</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body id="body">
+    <main>
+      <header>
+        <h1>To-Do App</h1>
+      </header>
+
+      <div class="search_area">
+        <form action="" id="form">
+          <input
+            type="text"
+            name="search"
+            id="task"
+            placeholder="Please Enter a New task"
+          />
+          <small id="err"></small>
+
+          <button id="add_btn" type="submit">ADD</button>
+        </form>
+      </div>
+
+      <!-- TASKS SECTION -->
+      <div class="task_section">
+        <div class="wrap">
+          <input type="checkbox" name="check" id="check" />
+          <p class="taskOutput"></p>
+          <button id="delete_btn">Delete</button>
+        </div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
