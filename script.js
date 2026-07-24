@@ -1,6 +1,6 @@
 const form = document.getElementById("form");
 const addTask = document.getElementById("task");
-const tskBtn = document.querySelector("add_btn");
+const tskBtn = document.querySelector(".add_btn");
 const taskArr = [];
 
 // Validate for empty inputs and prevent default behaviour
@@ -13,9 +13,9 @@ form.addEventListener("submit", (e) => {
     document.getElementById("err").textContent =
       "Tasks is currently empty.....";
   } else {
-    taskArr.push(task);
-    localStorage.setItem("task", JSON.stringify(taskArr));
-    console.log(taskArr);
+    const taskObj = { ...task };
+    localStorage.setItem("taskObj", JSON.stringify(taskObj));
+    console.log(localStorage);
     document.getElementById("err").textContent = "";
   }
 });
