@@ -31,23 +31,26 @@ const renderTask = () => {
   // Create Elements and append them to the DOM
   const taskObj = JSON.parse(localStorage.getItem("taskObj"));
 
-  const taskRender = document.createElement("div");
-  taskRender.classList.add("wrap");
+  for (let i = 0; i < taskObj.length; i++) {
+    creationDiv.textContent = "";
 
-  const input = document.createElement("input");
-  input.type = "checkbox";
-  input.classList.add("input");
-  taskRender.append(input);
+    const taskRender = document.createElement("div");
+    taskRender.classList.add("wrap");
 
-  const taskOutput = document.createElement("p");
-  taskOutput.classList.add("taskOutput");
-  taskOutput.textContent = taskObj[0].ToDo;
-  taskRender.append(taskOutput);
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.classList.add("input");
+    taskRender.append(input);
 
-  const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "Delete";
-  deleteBtn.classList.add("delete_btn");
-  taskRender.append(deleteBtn);
+    const taskOutput = document.createElement("p");
+    taskOutput.classList.add("taskOutput");
+    taskOutput.textContent = taskObj[i].ToDo;
+    taskRender.append(taskOutput);
 
-  creationDiv.append(taskRender);
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("delete_btn");
+    taskRender.append(deleteBtn);
+    creationDiv.append(taskRender);
+  }
 };
