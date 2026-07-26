@@ -79,7 +79,7 @@ input::placeholder {
   color: var(--text-muted);
 }
 
-button {
+.add_btn {
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
@@ -97,24 +97,43 @@ button {
 }
 
 .task_section {
-  .check {
-    display: flex;
-    gap: 0.5rem;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
 
-  .wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border-color);
-    padding: 0.5rem;
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
 
-    button {
-      padding: 4px 0.5rem;
-      border: none;
-      color: inherit;
-      background-color: var(--accent-red);
-      border-radius: 4px;
-    }
-  }
+.taskOutput {
+  flex: 1;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+.delete_btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background: var(--accent-red);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.delete_btn:hover {
+  opacity: 0.85;
+}
+
+.wrap input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--accent-yellow);
 }
