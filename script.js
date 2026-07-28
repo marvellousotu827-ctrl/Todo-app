@@ -1,10 +1,12 @@
 const form = document.getElementById("form");
 const addTask = document.getElementById("task");
-const tskBtn = document.querySelector(".add_btn");
+const tskBtn = document.getElementById("add_btn");
 const creationDiv = document.querySelector(".task_section");
-const taskArr = [];
+let taskArr = [];
 
 // Validate for empty inputs and prevent default behaviour
+
+renderTask();
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const task = addTask.value.trim();
@@ -27,24 +29,24 @@ form.addEventListener("submit", (e) => {
 });
 
 // Function to render tasks
-const renderTask = () => {
-  // Create Elements and append them to the DOM
-  const taskObj = JSON.parse(localStorage.getItem("taskObj"));
+function renderTask() {
+  taskArr = JSON.parse(localStorage.getItem("taskObj")) ?? [];
 
-  for (let i = 0; i < taskObj.length; i++) {
-    creationDiv.textContent = "";
+  creationDiv.textContent = "";
 
+  for (let i = 0; i < taskArr.length; i++) {
+    // Create Elements and append them to the DOM
     const taskRender = document.createElement("div");
     taskRender.classList.add("wrap");
 
-    const input = document.createElement("input");
-    input.type = "checkbox";
-    input.classList.add("input");
-    taskRender.append(input);
+    const checkInput = document.createElement("input");
+    checkInput.type = "checkbox";
+    checkInput.classList.add("input");
+    taskRender.append(checkInput);
 
     const taskOutput = document.createElement("p");
     taskOutput.classList.add("taskOutput");
-    taskOutput.textContent = taskObj[i].ToDo;
+    taskOutput.textContent = taskArr[i].ToDo;
     taskRender.append(taskOutput);
 
     const deleteBtn = document.createElement("button");
@@ -53,4 +55,4 @@ const renderTask = () => {
     taskRender.append(deleteBtn);
     creationDiv.append(taskRender);
   }
-};
+}
