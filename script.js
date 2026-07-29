@@ -4,8 +4,12 @@ const tskBtn = document.getElementById("add_btn");
 const creationDiv = document.querySelector(".task_section");
 let taskArr = [];
 
-// Validate for empty inputs and prevent default behaviour
+// To save tasks
+function saveTasks() {
+  localStorage.setItem("taskObj", JSON.stringify(taskArr));
+}
 
+// Validate for empty inputs and prevent default behaviour
 renderTask();
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -21,7 +25,7 @@ form.addEventListener("submit", (e) => {
       completed: false,
     };
     taskArr.push(formattedObj);
-    localStorage.setItem("taskObj", JSON.stringify(taskArr));
+    saveTasks();
     document.getElementById("err").textContent = "";
     addTask.value = "";
     renderTask();
@@ -44,6 +48,21 @@ function renderTask() {
     checkInput.classList.add("input");
     taskRender.append(checkInput);
 
+    /* checkInput.addEventListener("click", function () {
+      taskArr[i].completed = checkInput.checked;
+      saveTasks();
+      renderTask();
+
+      if (taskArr[i].completed) {
+        taskOutput.classList.add("completeTask");
+        saveTasks();
+      } else {
+        taskOutput.classList.remove("completeTask");
+      }
+      renderTask();
+    });
+    */
+
     const taskOutput = document.createElement("p");
     taskOutput.classList.add("taskOutput");
     taskOutput.textContent = taskArr[i].ToDo;
@@ -54,5 +73,12 @@ function renderTask() {
     deleteBtn.classList.add("delete_btn");
     taskRender.append(deleteBtn);
     creationDiv.append(taskRender);
+
+    // Event to delete tasks
+    deleteBtn.addEventListener("click", function () {
+      taskArr.splice(i, 1);
+      saveTasks();
+      renderTask();
+    });
   }
 }

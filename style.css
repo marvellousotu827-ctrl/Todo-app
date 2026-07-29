@@ -121,6 +121,10 @@ input::placeholder {
   font-size: 15px;
 }
 
+.completeTask {
+  text-decoration: line-through;
+}
+
 .delete_btn {
   padding: 0.5rem 0.8rem;
   border: none;
@@ -136,8 +140,8 @@ input::placeholder {
 }
 
 .wrap input[type="checkbox"] {
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
   accent-color: var(--accent-yellow);
 }
