@@ -43,30 +43,40 @@ function renderTask() {
     const taskRender = document.createElement("div");
     taskRender.classList.add("wrap");
 
-    const checkInput = document.createElement("input");
-    checkInput.type = "checkbox";
-    checkInput.classList.add("input");
-    taskRender.append(checkInput);
-
-    /* checkInput.addEventListener("click", function () {
-      taskArr[i].completed = checkInput.checked;
-      saveTasks();
-      renderTask();
-
-      if (taskArr[i].completed) {
-        taskOutput.classList.add("completeTask");
-        saveTasks();
-      } else {
-        taskOutput.classList.remove("completeTask");
-      }
-      renderTask();
-    });
-    */
-
     const taskOutput = document.createElement("p");
     taskOutput.classList.add("taskOutput");
     taskOutput.textContent = taskArr[i].ToDo;
     taskRender.append(taskOutput);
+
+    const checkInput = document.createElement("input");
+    checkInput.type = "checkbox";
+    checkInput.classList.add("input");
+
+    // Restore the checkbox state from the object
+    checkInput.checked = taskArr[i].completed;
+
+    taskRender.append(checkInput);
+
+    // Restore the completed style
+    if (taskArr[i].completed) {
+      taskOutput.classList.add("completeTask");
+    }
+
+    checkInput.addEventListener("change", function () {
+      // Update the object
+      taskArr[i].completed = checkInput.checked;
+
+      // Update the UI
+      if (checkInput.checked) {
+        taskOutput.classList.add("completeTask");
+      } else {
+        taskOutput.classList.remove("completeTask");
+      }
+
+      // Persist and re-render
+      saveTasks();
+      renderTask();
+    });
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
